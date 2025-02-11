@@ -1,0 +1,74 @@
+@model IEnumerable<JobRequest>
+@{
+    IEnumerable<JobRequest> IsApprovedTrue = @Model.Where(predicate => predicate.IsApproved == true).ToList();
+    IEnumerable<JobRequest> IsApprovedFalse = @Model.Where(predicate => predicate.IsApproved == false).ToList();
+}
+<div>
+    <h6 class="text-info display-6">TEST LİNK</h6>
+     <a class="btn btn-outline-primary">Yeni İş İsteği Ekle</a>
+</div>
+<div>
+    <h2 class="text-center display-2">Kabul Edilmeyen İşler</h2>
+</div>
+<table class="table table- table-hover">
+    <thead>
+        <tr>
+            
+            <th scope="col">İş Nedir ?</th>
+            <th scope="col">Müşteri İsmi</th>
+            <th scope="col">Ne Zaman</th>
+            <th scope="col">İş Kabul edildi mi?</th>
+            <th scope="col">İşlemler</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var rq in IsApprovedFalse)
+        {
+            <tr>
+                <td>@rq.JobTitle</td>
+                <td>@rq.RequestedBy</td>
+                <td>@rq.RequestDate</td>
+                <td>@Html.Raw(rq.IsApproved ? "<a class='btn disabled btn-sm btn-success'>Kabul Edildi</a>" : "<a class='btn disabled btn-sm btn-danger'>Kabul Edilmedi</a>")</td>
+                <td>
+                   <a class='btn btn-sm btn-success'>Kabul Et</a>
+                   <a class='btn btn-sm btn-danger'>Sil</a>
+                   <a class='btn btn-sm btn-warning'>Bilgiler</a>
+                </td>
+            </tr>
+        }
+
+    </tbody>
+</table>
+<div>
+    <h2 class="text-center display-2">Kabul Edilmiş İşler</h2>
+   
+</div>
+<table class="table table- table-hover">
+    <thead>
+        <tr>
+            
+            <th scope="col">İş Nedir ?</th>
+            <th scope="col">Müşteri İsmi</th>
+            <th scope="col">Ne Zaman</th>
+            <th scope="col">İş Kabul edildi mi?</th>
+            <th scope="col">İşlemler</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var rq in IsApprovedTrue)
+        {
+            <tr>
+                <td>@rq.JobTitle</td>
+                <td>@rq.RequestedBy</td>
+                <td>@rq.RequestDate</td>
+                <td>@Html.Raw(rq.IsApproved ? "<a class='btn disabled btn-sm btn-success'>Kabul Edildi</a>" : "<a class='btn disabled btn-sm btn-danger'>Kabul Edilmedi</a>")</td>
+                <td>
+                   <a class='btn btn-sm btn-danger'>Sil</a>
+                   <a class='btn btn-sm btn-warning'>İşler</a>
+                    <a asp-area="Admin" asp-controller="Jobs" asp-action="Index" asp-route-jobrequestid="@rq.Id" class="btn btn-sm btn-info">Yapılacak İşler</a>
+                </td>
+            </tr>
+        }   
+
+    </tbody>
+</table>

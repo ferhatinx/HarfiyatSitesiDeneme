@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="..\build\Harfiyat_Ui.props" />
+</Project>
