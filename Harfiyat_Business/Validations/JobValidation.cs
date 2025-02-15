@@ -8,5 +8,6 @@ public class JobValidation : AbstractValidator<Job>
     public JobValidation()
     {
       RuleFor(x=>x.ProjectName).NotEmpty().NotNull();  
+      RuleFor(x=>x.Price).NotEmpty();
     }
 }

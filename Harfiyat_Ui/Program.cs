@@ -11,7 +11,8 @@ builder.Services.ConfigureFluentValidation();
 builder.Services.AddControllersWithViews();
 builder.Services.AddRazorPages();
 
-builder.Services.AddRouting(opt =>{
+builder.Services.AddRouting(opt =>
+{
     opt.LowercaseQueryStrings = true;
     opt.AppendTrailingSlash = true;
 });
@@ -31,15 +32,16 @@ app.UseAuthorization();
 
 app.UseEndpoints(endpoints =>
 {
+      endpoints.MapAreaControllerRoute(
+      name: "admin",
+      areaName:"Admin",
+      pattern: "Admin/{controller=Home}/{action=Index}/{id?}");
+
     endpoints.MapControllerRoute(
-        name: "harfiyat",
+        name: "default",
         pattern: "{Controller=Home}/{Action=Index}/{id?}");
-    endpoints.MapAreaControllerRoute(
-        name: "admin",
-        areaName:"Admin",
-        pattern: "Admin/{Controller=JobRequest}/{Action=Index}/{id?}");
-        
-    
+  
+
 });
 
 //! AUTO MİGRATE

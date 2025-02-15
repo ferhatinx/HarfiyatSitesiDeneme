@@ -32,7 +32,7 @@ namespace Harfiyat_DataAccess.Migrations
                     b.Property<int>("ImageType")
                         .HasColumnType("INTEGER");
 
-                    b.Property<int?>("JobId")
+                    b.Property<int?>("JobRequestId")
                         .HasColumnType("INTEGER");
 
                     b.Property<DateTime>("UploadedAt")
@@ -40,7 +40,7 @@ namespace Harfiyat_DataAccess.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("JobId");
+                    b.HasIndex("JobRequestId");
 
                     b.ToTable("Images");
                 });
@@ -51,22 +51,16 @@ namespace Harfiyat_DataAccess.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
-                    b.Property<decimal>("Amount")
-                        .HasColumnType("TEXT");
-
-                    b.Property<decimal?>("Budget")
-                        .HasColumnType("TEXT");
-
                     b.Property<DateTime?>("FinishDate")
                         .HasColumnType("TEXT");
 
                     b.Property<int>("JobRequestId")
                         .HasColumnType("INTEGER");
 
-                    b.Property<int>("JobSummaryId")
-                        .HasColumnType("INTEGER");
-
                     b.Property<string>("Localiton")
+                        .HasColumnType("TEXT");
+
+                    b.Property<decimal?>("Price")
                         .HasColumnType("TEXT");
 
                     b.Property<string>("ProjectName")
@@ -75,11 +69,15 @@ namespace Harfiyat_DataAccess.Migrations
                     b.Property<DateTime?>("StartDate")
                         .HasColumnType("TEXT");
 
+                    b.Property<string>("Summary")
+                        .HasColumnType("TEXT");
+
+                    b.Property<bool>("isCompleted")
+                        .HasColumnType("INTEGER");
+
                     b.HasKey("Id");
 
                     b.HasIndex("JobRequestId");
-
-                    b.HasIndex("JobSummaryId");
 
                     b.ToTable("Jobs");
                 });
@@ -114,7 +112,7 @@ namespace Harfiyat_DataAccess.Migrations
                             Id = 1,
                             IsApproved = false,
                             JobTitle = "Bina Yıkımı",
-                            RequestDate = new DateTime(2025, 2, 10, 15, 5, 21, 529, DateTimeKind.Local).AddTicks(6604),
+                            RequestDate = new DateTime(2025, 2, 15, 14, 39, 7, 744, DateTimeKind.Local).AddTicks(3878),
                             RequestedBy = "Ferhat Ersoy"
                         },
                         new
@@ -122,7 +120,7 @@ namespace Harfiyat_DataAccess.Migrations
                             Id = 2,
                             IsApproved = false,
                             JobTitle = "Kanalizasyon kazimi",
-                            RequestDate = new DateTime(2025, 2, 10, 15, 5, 21, 529, DateTimeKind.Local).AddTicks(6612),
+                            RequestDate = new DateTime(2025, 2, 15, 14, 39, 7, 744, DateTimeKind.Local).AddTicks(3892),
                             RequestedBy = "Osman Ersoy"
                         },
                         new
@@ -130,7 +128,7 @@ namespace Harfiyat_DataAccess.Migrations
                             Id = 3,
                             IsApproved = true,
                             JobTitle = "Duvar Yikimi",
-                            RequestDate = new DateTime(2025, 2, 10, 15, 5, 21, 529, DateTimeKind.Local).AddTicks(6613),
+                            RequestDate = new DateTime(2025, 2, 15, 14, 39, 7, 744, DateTimeKind.Local).AddTicks(3893),
                             RequestedBy = "İlker Yalçın"
                         },
                         new
@@ -138,35 +136,18 @@ namespace Harfiyat_DataAccess.Migrations
                             Id = 4,
                             IsApproved = false,
                             JobTitle = "Çiçek çukuru kazma",
-                            RequestDate = new DateTime(2025, 2, 10, 15, 5, 21, 529, DateTimeKind.Local).AddTicks(6615),
+                            RequestDate = new DateTime(2025, 2, 15, 14, 39, 7, 744, DateTimeKind.Local).AddTicks(3894),
                             RequestedBy = "Uzay Can"
                         });
                 });
 
-            modelBuilder.Entity("Harfiyat_Entities.Entities.JobSummary", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("INTEGER");
-
-                    b.Property<decimal>("TotalExpense")
-                        .HasColumnType("TEXT");
-
-                    b.Property<decimal>("TotalReceivedAmount")
-                        .HasColumnType("TEXT");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("JobSummaries");
-                });
-
             modelBuilder.Entity("Harfiyat_Entities.Entities.Image", b =>
                 {
-                    b.HasOne("Harfiyat_Entities.Entities.Job", "Job")
+                    b.HasOne("Harfiyat_Entities.Entities.JobRequest", "JobRequest")
                         .WithMany("Images")
-                        .HasForeignKey("JobId");
+                        .HasForeignKey("JobRequestId");
 
-                    b.Navigation("Job");
+                    b.Navigation("JobRequest");
                 });
 
             modelBuilder.Entity("Harfiyat_Entities.Entities.Job", b =>
@@ -177,29 +158,13 @@ namespace Harfiyat_DataAccess.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("Harfiyat_Entities.Entities.JobSummary", "JobSummary")
-                        .WithMany("Jobs")
-                        .HasForeignKey("JobSummaryId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
                     b.Navigation("JobRequest");
-
-                    b.Navigation("JobSummary");
-                });
-
-            modelBuilder.Entity("Harfiyat_Entities.Entities.Job", b =>
-                {
-                    b.Navigation("Images");
                 });
 
             modelBuilder.Entity("Harfiyat_Entities.Entities.JobRequest", b =>
                 {
-                    b.Navigation("Jobs");
-                });
+                    b.Navigation("Images");
 
-            modelBuilder.Entity("Harfiyat_Entities.Entities.JobSummary", b =>
-                {
                     b.Navigation("Jobs");
                 });
 #pragma warning restore 612, 618

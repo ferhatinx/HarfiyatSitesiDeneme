@@ -4,17 +4,17 @@ using Harfiyat_Entities.Entities;
 
 namespace Harfiyat_Business.Interfaces;
 
-public interface IJobService 
+public interface IJobService
 {
-    IResponse<IEnumerable<Job>> GetAllJob(bool trackChanges=false);
+    IResponse<IEnumerable<Job>> GetAllJob(bool trackChanges = false);
 
-    IResponse<Job?> GetByIdJob(int id, bool trackChanges=false);
+    IResponse<Job?> GetByIdJob(int id, bool trackChanges = false);
 
     IResponse AddJob(Job entity);
 
     IResponse UpdateJob(Job entity);
+    IResponse CompletedJob(int id);
+    IResponse DeleteJob(int id);
 
-    IResponse DeleteJob(Job entity);
-
-     public IResponse<IEnumerable<Job>> GetAllWithJobRequest(int jobRequestId,bool trackChanges = false);
+    public IResponse<IEnumerable<Job>> GetAllWithJobRequest(int jobRequestId, bool trackChanges = false);
 }

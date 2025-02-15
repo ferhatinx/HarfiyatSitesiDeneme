@@ -1,8 +1,8 @@
 namespace Harfiyat_Common.ResponseObjects;
 
-public interface IResponse<T>
+public interface IResponse<T> : IResponse
 {
     T? Data { get; set; }
 
-    List<CustomValidationError>? Errors { get; set; }
+   
 }

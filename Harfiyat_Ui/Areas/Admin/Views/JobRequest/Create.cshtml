@@ -1,0 +1,20 @@
+@model JobRequest
+
+<div>
+  <h5>Yeni İş İsteği Ekle</i></h5>
+  <form asp-action="Create" asp-controller="JobRequest" method="post">
+    <div class="mb-3">
+      <label for="RequestedBy" class="form-label">Adınız Soyadınız</label>
+      <input asp-for="RequestedBy" class="form-control" id="RequestedBy">
+    </div>
+    <div class="mb-3">
+      <label for="JobTitle" class="form-label">Proje ismi</label>
+      <input asp-for="JobTitle" class="form-control" id="JobTitle">
+    </div>
+    <div class="mb-3">
+      <label for="RequestDate" class="form-label">Ne Zaman Olacak?</label>
+      <input asp-for="RequestDate" type="date" class="form-control datepicker" id="startdate">
+    </div>
+    <button type="submit" class="btn btn-primary">Ekle</button>
+  </form>
+</div>

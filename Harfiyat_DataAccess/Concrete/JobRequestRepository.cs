@@ -29,7 +29,7 @@ public class JobRequestRepository : BaseRepository<JobRequest>, IJobRequestReepo
     }
 
     public IEnumerable<JobRequest> GetAllWithConditionJobRequest(Expression<Func<JobRequest, bool>> expression, bool trackChanges = false) 
-    => GetAllWithConditionJobRequest(expression,trackChanges);
+    => GetAllWithCondition(expression,trackChanges);
    
 
     public JobRequest? GetByIdJobRequest(int id, bool trackChanges = false) => GetById(id,trackChanges);

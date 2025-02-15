@@ -1,0 +1,39 @@
+@model Job
+
+<div>
+  <h5>Yeni İş EKLE</h5>
+  <form asp-action="Create" asp-controller="Jobs" method="post">
+    <input type="hidden" asp-for="JobRequestId" value="@ViewBag.rqId">
+    <div class="mb-3">
+      <label for="ProjectName" class="form-label">Proje ismi</label>
+      <input asp-for="ProjectName" class="form-control" id="ProjectName">
+      <div id="ProjectName" class="form-text"></div>
+    </div>
+    <div class="mb-3">
+      <label for="Localiton" class="form-label">Nerede</label>
+      <input asp-for="Localiton" class="form-control" id="Localiton">
+      <div id="Localiton" class="form-text"></div>
+    </div>
+    <div class="mb-3">
+      <label for="startdate" class="form-label">Başlangıç Zamanı</label>
+      <input asp-for="StartDate" type="date" class="form-control datepicker" id="startdate">
+      <div id="startdate" class="form-text"></div>
+    </div>
+    <div class="mb-3">
+      <label for="finishDate" class="form-label">Bitiş Zamanı</label>
+      <input asp-for="FinishDate" type="date" class="form-control datepicker" id="finishDate">
+      <div id="finishDate" class="form-text"></div>
+    </div>
+    <div class="mb-3">
+      <label for="Price" class="form-label">Ücret</label>
+      <input asp-for="Price" class="form-control" id="Price">
+      <div id="Price" class="form-text"></div>
+    </div>
+    <div class="mb-3">
+      <label asp-for="Summary" class="form-label">ÖZET</label>
+      <textarea asp-for=Summary class="form-control" id="Summary" rows="3"></textarea>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Ekle</button>
+  </form>
+</div>

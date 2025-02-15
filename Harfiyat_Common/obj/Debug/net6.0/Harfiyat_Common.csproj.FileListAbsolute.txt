@@ -5,6 +5,7 @@ C:\Users\Ferhat\Documents\c#\Project\harfiyat\Harfiyat_Common\obj\Debug\net6.0\H
 C:\Users\Ferhat\Documents\c#\Project\harfiyat\Harfiyat_Common\obj\Debug\net6.0\Harfiyat_Common.AssemblyInfoInputs.cache
 C:\Users\Ferhat\Documents\c#\Project\harfiyat\Harfiyat_Common\obj\Debug\net6.0\Harfiyat_Common.AssemblyInfo.cs
 C:\Users\Ferhat\Documents\c#\Project\harfiyat\Harfiyat_Common\obj\Debug\net6.0\Harfiyat_Common.csproj.CoreCompileInputs.cache
+C:\Users\Ferhat\Documents\c#\Project\harfiyat\Harfiyat_Common\obj\Debug\net6.0\Harfiyat_Common.sourcelink.json
 C:\Users\Ferhat\Documents\c#\Project\harfiyat\Harfiyat_Common\obj\Debug\net6.0\Harfiyat_Common.dll
 C:\Users\Ferhat\Documents\c#\Project\harfiyat\Harfiyat_Common\obj\Debug\net6.0\refint\Harfiyat_Common.dll
 C:\Users\Ferhat\Documents\c#\Project\harfiyat\Harfiyat_Common\obj\Debug\net6.0\Harfiyat_Common.pdb

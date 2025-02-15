@@ -1,3 +1,4 @@
+using System.Linq.Expressions;
 using Harfiyat_Common.ResponseObjects;
 using Harfiyat_Entities.Entities;
 
@@ -12,7 +13,8 @@ public interface IJobRequestService
     IResponse AddJobRequest(JobRequest entity);
 
     IResponse UpdateJobRequest(JobRequest entity);
-
-    IResponse DeleteJobRequest(JobRequest entity);
+    IResponse AcceptJobRequest(int id);
+    IResponse DeleteJobRequest(int id);
     IResponse<IEnumerable<JobRequest>> GetAllJobRequestWithJobs(bool trackChanges=false);
+    IResponse<IEnumerable<JobRequest>> GetAllWithConditionJobRequest(Expression<Func<JobRequest,bool>> expression,bool trackChanges = false);
 }

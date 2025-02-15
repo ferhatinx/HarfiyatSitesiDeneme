@@ -13,14 +13,12 @@ public class Job : BaseEntitiy
 
     public DateTime? FinishDate { get; set; }
 
-    public decimal? Budget { get; set; }
-    
-    public decimal Amount { get; set; }
+    public decimal? Price { get; set; }
 
+    public bool isCompleted { get; set; } = false;
+    public string? Summary { get; set; }
     public int JobRequestId { get; set; }
     public JobRequest? JobRequest { get; set; }
-    public IEnumerable<Image>? Images { get; set; }
-    public int JobSummaryId { get; set; }
-    public JobSummary? JobSummary { get; set; }
+    
 
 }
